@@ -1,0 +1,41 @@
+.line_graph_container {
+  padding:3rem 2rem;
+  border: 1px solid var(--primary-300);
+  border-radius: 8px;
+  color: var(--secondary-200);
+  margin-bottom: 3rem;
+}
+
+.graph_title {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: var(--secondary-200);
+  margin-left: 1rem;
+  /* background-color: var(--accent-green-dim); */
+  width: 100%;
+  border-bottom: 1px solid var(--primary-300);
+  padding: 2rem 0 1rem 0;
+  /* border: 1px solid var(--accent-green);
+    border-radius: 6px; */
+}
+.graph_selector_containter {
+  width: 100%;
+}
+.graph_selectors {
+  padding: 0.5rem 0.2rem;
+  border: 1px solid var(--accent-green);
+  background-color: var(--accent-green-dim);
+  border-radius: 25px;
+}
+.selector {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 25px;
+  color: var(--secondary-300);
+}
+
+.selected {
+  background-color: var(--accent-green);
+}

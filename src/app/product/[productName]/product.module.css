@@ -1,0 +1,163 @@
+.product_detail_container {
+  max-width: 1280px;
+  height: 100%;
+  /* background-color: red; */
+  padding: 1rem 1rem;
+  overflow-y: scroll;
+}
+
+/* product header detail */
+
+.product_header_container {
+  margin: 3rem 0;
+  /* background-color: rebeccapurple; */
+  padding: 2rem 2rem;
+  border: 1px solid var(--primary-300);
+  border-radius: 6px;
+}
+.header_company_name, .header_company_stock_price {
+  font-size: 1.2rem;
+  color: var(--secondary-100);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.header_company_stock,
+.header_company_exchange {
+  font-size: 0.8rem;
+  color: var(--secondary-100);
+ 
+}
+
+.product__ticker_change_percentage {
+    font-size: 0.8rem;
+
+  }
+
+
+/* product information */
+
+.product_information_container {
+    margin-bottom: 3rem;
+}
+.product_information_header {
+  padding: 0.8rem 2rem;
+  border: 1px solid var(--primary-300);
+  border-radius: 8px 8px 0 0;
+  color: var(--secondary-200);
+  font-weight: 600;
+}
+.product_information_body {
+  padding: 1rem 2rem;
+  border: 1px solid var(--primary-300);
+  border-radius: 0 0 8px 8px;
+  border-top: none;
+  color: var(--secondary-300);
+}
+.product_information__description {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.5rem;
+}
+.product_information__company_tags {
+  display: grid;
+  gap: 1rem;
+
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.product_information__tag {
+  padding: 0.8rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border-radius: 6px;
+  background-color: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  margin-right: 1rem;
+}
+.product_information__company_labels {
+  display: grid;
+  gap: 1rem;
+  color: var(--secondary-500);
+
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+/* labeled data */
+.label_data {
+  min-width: 100px;
+  padding: 0.8rem 2rem;
+  font-size: 0.8rem;
+  color: var(--secondary-300);
+  /* background-color: red; */
+  letter-spacing: 0.3px;
+}
+.data {
+  font-size: 0.8rem;
+  color: var(--secondary-300);
+  /* background-color: red; */
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/*  price visualiser container */
+.price_visualiser_container {
+  width: 100%;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
+  /* flex-wrap: wrap; */
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.slider_container {
+  /* background-color: red; */
+  min-width: 300px;
+  width: 60%;
+  height: fit-content;
+
+  position: relative;
+}
+
+.slider__bar {
+  position: relative;
+
+  width: 100%;
+  height: 8px;
+  border-radius: 25px;
+  background-color: var(--primary-400);
+}
+.slider__fill {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  background-color: var(--accent-blue);
+  display: inline-block;
+
+  height: 8px;
+  border-radius: 25px;
+}
+.slider__bar_marker {
+  position: absolute;
+  top: -3rem;
+
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+}
+.slider__bar_marker p {
+  font-size: 0.8rem;
+  color: var(--secondary-300);
+}

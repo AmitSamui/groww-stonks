@@ -1,0 +1,85 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+:root {
+  /* Your default theme */
+
+  --accent-blue: #5266ff;
+  --accent-blue-dim: #5266ff36;
+  --accent-green-dim: #25d7aa36;
+  --accent-green: #25d7aa;
+
+  --primary-100: #f8fafc;
+  --primary-200: #f1f5f9;
+  --primary-300: #e2eaf5;
+  --primary-400: #c0cfdd;
+  --primary-500: #8194ac;
+
+  --secondary-100: #1a1a1a;
+  --secondary-200: #202020;
+  --secondary-300: #262626;
+  --secondary-400: #2c2c2c;
+  --secondary-500: #333333;
+
+  /* --text-md: 120px; */
+}
+
+[data-theme="dark"] {
+  --secondary-100: #f8fafc;
+  --secondary-200: #f1f5f9;
+  --secondary-300: #dae3ed;
+  --secondary-400: #c0cfdd;
+  --secondary-500: #8194ac;
+
+  --primary-100: #1a1a1a;
+  --primary-200: #202020;
+  --primary-300: #262626;
+  --primary-400: #2c2c2c;
+  --primary-500: #333333;
+}
+
+body {
+  background-color: var(--primary-100);
+  color: var(--secondary-100);
+  font-size: var(--text-md);
+  font-family: var(--font-poppins);
+}
+
+
+.flex{
+  display: flex;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.justify-center{
+  justify-content: center;
+}
+.align-center{
+  align-items: center;
+}
+.justify-start{
+  justify-content: start;
+}
+.align-start{
+  align-items: start;
+}
+.justify-end{
+  justify-content: end;
+}
+.align-end{
+  align-items: end;
+}
+.justify-between{
+  justify-content: space-between;
+}
+
+.apexcharts-tooltip {
+  background: var(--secondary-300);
+  color: var(--accent-blue);
+}

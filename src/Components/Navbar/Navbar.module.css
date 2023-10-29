@@ -1,0 +1,9 @@
+.navbar_container {
+  border-bottom: 1px solid var(--primary-300);
+  padding: 1rem 2rem;
+  width: 100%;
+}
+.nav__menu_button {
+  cursor: pointer;
+  color: var(--secondary-200);
+}
