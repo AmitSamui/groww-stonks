@@ -6,9 +6,13 @@ import { BiMenu } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "@/Redux/features/sidebarSlice";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
+import { usePathname } from "next/navigation";
+import { useWindowSize } from "@/hooks/windowSize";
 
 const Navbar = () => {
+  const path = usePathname();
   const dispatch = useDispatch();
+  const windowSize = useWindowSize();
 
   return (
     <div
@@ -21,8 +25,9 @@ const Navbar = () => {
         }}
         size={"1.2rem"}
       />
-      <SearchBar />
-      <ThemeSwitcher />
+      {path !== "/" && <SearchBar />}
+
+      {windowSize.width >= 500 && <ThemeSwitcher />}
     </div>
   );
 };

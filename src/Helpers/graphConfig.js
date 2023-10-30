@@ -1,5 +1,5 @@
 export const graphOptions = {
-  colors: ["var(--accent-green)", "#E91E63", "#9C27B0"],
+  colors: ["var(--accent-green)"],
   chart: {
     type: "line",
     zoom: {
@@ -13,7 +13,7 @@ export const graphOptions = {
   },
   stroke: {
     show: true,
-    curve: "straight",
+    // curve: "straight",
     width: 2,
   },
 

@@ -1,23 +1,54 @@
-// "use client";
+"use client";
 import { fetchExploreData } from "@/api";
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import styles from "./explore.module.css";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import Link from "next/link";
 import { exploreStockType } from "@/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { setProductInformation } from "@/Redux/features/productSlice";
+import Loader from "@/Components/loader/Loader";
+import Error from "@/Components/Error/Error";
 
-const ExploreStocks = async ({ params }) => {
-  // const [products, setProducts] = useState();
-  // const [error, setError] = useState();
+const ExploreStocks = ({ params }) => {
+  const [products, setProducts] = useState();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(async () => {
-  //   const productData = await fetchExploreData(params.exploreType);
-  //   setProducts(productData);
-  // }, []);
+  const setProductQuery = async () => {
+    const { queryData, error } = await fetchExploreData(
+      params.exploreType,
+      setLoading
+    );
+    console.log(queryData, error);
+    if (error) {
+      setError(error.message);
+      return;
+    }
+    setProducts(queryData);
+  };
 
-  const products = await fetchExploreData(params.exploreType);
+  useEffect(() => {
+    setProductQuery();
+  }, []);
+
+  if (loading)
+    return (
+      <div
+        className={`${styles.loading_container} flex justify-center align-center`}
+      >
+        <Loader loadingText={"Hang Tight : loading your data"} />
+      </div>
+    );
+
+  if (error !== "")
+    return (
+      // <div className={` ${styles.error} flex justify-center align-center`}>
+      <Error errorText={"no data : API limit reached"} />
+      // </div>
+    );
+
+  // const products = await fetchExploreData(params.exploreType);
 
   return (
     <div
@@ -53,7 +84,9 @@ const ProductCard = ({ productData }) => {
       }}
       className={`${styles.product_card}`}
     >
-      <div className={`${styles.product__ticker_image}`}></div>
+      <div className={`${styles.product__ticker_image}`}>
+        {productData?.ticker.substring(0, 1)}
+      </div>
       <p className={`${styles.product__ticker_name}`}>{productData.ticker}</p>
       <p className={`${styles.product__ticker_price}`}>$ {productData.price}</p>
       <div

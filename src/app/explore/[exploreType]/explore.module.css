@@ -5,21 +5,21 @@
   height: 100%;
   /* grid-template-rows: repeat(5 , minmax(20px , 1fr)); */
 }
-.explore_stocks_type{
- font-size: 2rem;
-font-weight: 600;
+.explore_stocks_type {
+  font-size: 2rem;
+  font-weight: 600;
   width: 100%;
   margin-bottom: 2rem;
   margin-top: 1rem;
   padding-left: 1rem;
- color: var(--secondary-200);
+  color: var(--secondary-200);
 }
 .explore_stocks {
   width: 100%;
   height: 100%;
   display: grid;
   gap: 1rem;
-  
+
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
@@ -61,4 +61,9 @@ font-weight: 600;
 .product__ticker_change_percentage {
   font-size: 0.8rem;
   opacity: 0.8;
+}
+
+.loading_container {
+  width: 100%;
+  height: 100%;
 }

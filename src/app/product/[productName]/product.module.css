@@ -6,6 +6,8 @@
   overflow-y: scroll;
 }
 
+
+
 /* product header detail */
 
 .product_header_container {
@@ -14,8 +16,29 @@
   padding: 2rem 2rem;
   border: 1px solid var(--primary-300);
   border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  /* flex-wrap: wrap; */
 }
-.header_company_name, .header_company_stock_price {
+.product_header__detail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.product__header_image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--secondary-100);
+  background-color: rgba(0, 255, 255, 0.178);
+}
+.header_company_detail {
+  margin-left: 1rem;
+}
+.header_company_name,
+.header_company_stock_price {
   font-size: 1.2rem;
   color: var(--secondary-100);
   font-weight: 600;
@@ -25,19 +48,16 @@
 .header_company_exchange {
   font-size: 0.8rem;
   color: var(--secondary-100);
- 
 }
 
 .product__ticker_change_percentage {
-    font-size: 0.8rem;
-
-  }
-
+  font-size: 0.8rem;
+}
 
 /* product information */
 
 .product_information_container {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 .product_information_header {
   padding: 0.8rem 2rem;
@@ -160,4 +180,52 @@
 .slider__bar_marker p {
   font-size: 0.8rem;
   color: var(--secondary-300);
+}
+
+@media only screen and (max-width: 600px) {
+  .price_visualiser_container {
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .slider_container {
+    /* background-color: red; */
+
+    width: 100%;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+  .product_header_container {
+    margin: 3rem 0;
+
+    padding: 2rem 2rem;
+    border: 1px solid var(--primary-300);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .product_header__detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .header_company_detail{
+    align-items: center;
+    margin: 1rem 0rem;
+    width: 100%;
+    text-align: center;
+  }
+  .product_header__price{
+    align-items: center;
+  }
 }

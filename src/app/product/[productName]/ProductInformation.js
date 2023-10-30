@@ -6,7 +6,7 @@ import {
   getCurrentRelativePercentage,
 } from "@/Helpers";
 
-const ProductInformation = ({ companyinformation }) => {
+const ProductInformation = ({ companyinformation, currentPrice }) => {
   return (
     <div className={`${styles.product_information_container}`}>
       <div className={`${styles.product_information_header}`}>
@@ -14,7 +14,9 @@ const ProductInformation = ({ companyinformation }) => {
       </div>
       <div className={`${styles.product_information_body}`}>
         <p className={`${styles.product_information__description}`}>
-          {companyinformation.Description}
+          {companyinformation.Description !== "none"
+            ? companyinformation.Description
+            : "No Description provided"}
         </p>
         <div className={`${styles.product_information__company_tags} `}>
           <p className={`${styles.product_information__tag} `}>
@@ -24,11 +26,14 @@ const ProductInformation = ({ companyinformation }) => {
             Sector : {companyinformation.Sector}
           </p>
         </div>
-        <PriceVisualiser
-          low={parseInt(companyinformation["52WeekLow"])}
-          high={parseInt(companyinformation["52WeekHigh"])}
-          current={137.76}
-        />
+        {currentPrice && (
+          <PriceVisualiser
+            low={parseInt(companyinformation["52WeekLow"])}
+            high={parseInt(companyinformation["52WeekHigh"])}
+            current={currentPrice}
+          />
+        )}
+
         <div className={`${styles.product_information__company_labels} `}>
           <LabeledData
             data={`$ ${convertToInternationalCurrencySystem(

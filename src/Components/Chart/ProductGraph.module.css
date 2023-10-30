@@ -1,5 +1,9 @@
+.loading_container {
+  width: 100%;
+  height: 300px;
+}
 .line_graph_container {
-  padding:3rem 2rem;
+  padding: 3rem 2rem;
   border: 1px solid var(--primary-300);
   border-radius: 8px;
   color: var(--secondary-200);
@@ -20,6 +24,7 @@
 }
 .graph_selector_containter {
   width: 100%;
+  margin-top: 3rem;
 }
 .graph_selectors {
   padding: 0.5rem 0.2rem;
@@ -38,4 +43,11 @@
 
 .selected {
   background-color: var(--accent-green);
+}
+.error {
+  padding: 3rem 2rem;
+  border: 1px solid var(--primary-300);
+  border-radius: 8px;
+  color: var(--secondary-200);
+  margin-bottom: 3rem;
 }
