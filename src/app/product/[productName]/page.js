@@ -4,16 +4,13 @@ import { usePathname, useSearchParams } from "next/navigation";
 import styles from "./product.module.css";
 // import { companyInformation } from "@/constants";
 import ProductInformation from "./ProductInformation";
-import ProductGraph from "@/Components/Chart/ProductGraph";
 
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import ProductGraphChart from "@/Components/Chart/ProductGraphChart";
-import { fetchCompanyOverview } from "@/api";
+
 import Loader from "@/Components/loader/Loader";
 import Error from "@/Components/Error/Error";
-// import { companyInformation } from "@/constants";
-
-// import { useSelector } from "react-redux";
+import { useFetchCompanyData } from "@/hooks/fetchData";
 
 const ProductDetail = () => {
   const path = usePathname();
@@ -22,36 +19,16 @@ const ProductDetail = () => {
   // console.log(queryParam.get("change"));
   // console.log(queryParam.get("price"));
   const productName = path.split("/")[2];
-  const [companyInformation, setCompanyInformation] = useState();
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
+  const { companyInformation, error, loading } =
+    useFetchCompanyData(productName);
 
-  useEffect(() => {
-    const fetchOverview = async () => {
-      const { queryData: companyData, error } = await fetchCompanyOverview(
-        productName,
-        setLoading
-      );
-      if (error) {
-        setError(error.message);
-        return;
-      }
-      setCompanyInformation(companyData);
-    };
-
-    fetchOverview();
-  }, []);
-
-  if (loading) return;
-  <Loader loadingText={"Hang Tight : loading your data"} />;
+  if (loading) return <Loader loadingText={"Hang Tight : loading your data"} />;
 
   if (error) return <Error errorText={error} />;
 
   return (
     companyInformation && (
       <div className={`${styles.product_detail_container}`}>
-        {/* this is the product */}
-
         <ProductHeader
           name={companyInformation.Name}
           assetType={companyInformation.AssetType}

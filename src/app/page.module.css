@@ -5,7 +5,7 @@
   overflow-y: scroll;
 }
 
-.search_sub_container{
+.search_sub_container {
   max-width: 50%;
 }
 
@@ -20,7 +20,7 @@
   color: var(--secondary-200);
   text-align: center;
 }
-.search_guide_text{
+.search_guide_text {
   font-size: 0.8rem;
   font-weight: 400;
   margin-bottom: 1rem;
@@ -28,7 +28,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .search_sub_container{
+  .search_sub_container {
     max-width: 100%;
   }
 }

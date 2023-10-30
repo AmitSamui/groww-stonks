@@ -1,10 +1,12 @@
 import React from "react";
 import { CirclesWithBar } from "react-loader-spinner";
-import styles from "./loader.module.css"
+import styles from "./loader.module.css";
 
-const Loader = ({loadingText}) => {
+const Loader = ({ loadingText }) => {
   return (
-    <div className={`${styles.loader_wrapper} flex-column justify-center align-center`}>
+    <div
+      className={`${styles.loader_wrapper} flex-column justify-center align-center`}
+    >
       <CirclesWithBar
         height="50"
         width="50"
@@ -15,9 +17,7 @@ const Loader = ({loadingText}) => {
         barColor="var(--accent-green)"
         ariaLabel="circles-with-bar-loading"
       />
-      <p className={`${styles.loader_text}`}>
-        {loadingText}
-      </p>
+      <p className={`${styles.loader_text}`}>{loadingText}</p>
     </div>
   );
 };

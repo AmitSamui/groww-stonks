@@ -3,15 +3,12 @@ import styles from "./Error.module.css";
 import Image from "next/image";
 import errorSvg from "../../../public/error.svg";
 
-console.log(errorSvg + "errror");
-
 const Error = ({ errorText }) => {
   return (
     <div className={`${styles.error} flex-column justify-center align-center`}>
       <Image
         className={`${styles.error_image}`}
         src={errorSvg}
-        // placeholder="blur"
         alt="error"
       />
       <p className={`${styles.error_text}`}>{errorText}</p>

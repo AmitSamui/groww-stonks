@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.css";
 import { fetchSearchQuery } from "@/api";
-import { searchMatch } from "@/constants";
+import { searchMatch } from "@/Helpers/constants";
 import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
 
@@ -11,12 +11,12 @@ const SearchBar = () => {
   const [queryData, setQueryData] = useState([]);
   const [error, setError] = useState();
 
-  // filters
+  // search filters
   const [all, setAll] = useState(true);
   const [EFT, setEFT] = useState(false);
   const [stock, setStock] = useState(false);
 
-  const handleSearchQuery = (event) => {
+  const handleSearchQueryInput = (event) => {
     setQuery(event.target.value);
   };
 
@@ -24,19 +24,13 @@ const SearchBar = () => {
     let timeout;
     if (query !== "") {
       timeout = setTimeout(async () => {
-        // const {queryData , error} = await fetchSearchQuery(query)
-        // console.log(searchMatch);
-        // if(error) {
-        //   setError(error.message)
-        //   return;
-        // }
-        // const queryData = searchMatch.filter((match) => {
-        //   return (
-        //     (EFT && match["3. type"] === "EFT") ||
-        //     (stock && match["3. type"] === "Equity") ||
-        //     all
-        //   );
-        // });
+        const { queryData: searchMatch, error } = await fetchSearchQuery(query);
+
+        if (error) {
+          setError(error.message);
+          return;
+        }
+
         setQueryData(searchMatch);
       }, 500);
     }
@@ -55,7 +49,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Search Stocks..."
           value={query}
-          onChange={handleSearchQuery}
+          onChange={handleSearchQueryInput}
         />
         <RxCross2
           onClick={() => setQuery("")}
@@ -63,7 +57,7 @@ const SearchBar = () => {
         />
       </div>
 
-      {queryData.length !== 0 && (
+      {queryData.length !== 0 ? (
         <div className={`${styles.searchbar_input_results}`}>
           <div
             className={`${styles.searchbar_input__filters} flex justify-start align-center`}
@@ -72,8 +66,6 @@ const SearchBar = () => {
               onClick={() => {
                 if (!EFT && !stock && all) return;
                 setAll((prev) => !prev);
-                // setEFT(false);
-                // setStock(false);
               }}
               className={`${styles.searchbar_input_filter} ${
                 all ? styles.searchbar_input_filter_selected : null
@@ -85,8 +77,6 @@ const SearchBar = () => {
               onClick={() => {
                 if (!stock && EFT && !all) return;
                 setEFT((prev) => !prev);
-                // if (EFT || stock) setAll(false);
-                // if (!EFT && !stock) setAll(true);
               }}
               className={`${styles.searchbar_input_filter} ${
                 EFT ? styles.searchbar_input_filter_selected : null
@@ -98,7 +88,6 @@ const SearchBar = () => {
               onClick={() => {
                 if (!EFT && stock && !all) return;
                 setStock((prev) => !prev);
-                // if (EFT || stock) setAll(false);
               }}
               className={`${styles.searchbar_input_filter} ${
                 stock ? styles.searchbar_input_filter_selected : null
@@ -109,21 +98,31 @@ const SearchBar = () => {
           </div>
 
           <div className={`${styles.search_results}`}>
-            {queryData?.map((data, index) => {
-              return all ||
-                (EFT && data["3. type"] === "EFT") ||
-                (stock && data["3. type"] === "Equity") ? (
-                <SearchResult
-                  key={index}
-                  name={data["2. name"]}
-                  symbol={data["1. symbol"]}
-                  type={data["3. type"]}
-                  setQuery={setQuery}
-                />
-              ) : null;
-            })}
+            {queryData && queryData.length > 0 ? (
+              queryData?.map((data, index) => {
+                return all ||
+                  (EFT && data["3. type"] === "EFT") ||
+                  (stock && data["3. type"] === "Equity") ? (
+                  <SearchResult
+                    key={index}
+                    name={data["2. name"]}
+                    symbol={data["1. symbol"]}
+                    type={data["3. type"]}
+                    setQuery={setQuery}
+                  />
+                ) : null;
+              })
+            ) : (
+              <div> No search results </div>
+            )}
           </div>
         </div>
+      ) : (
+        query !== "" && (
+          <div className={`${styles.searchbar_input_results}`}>
+            no search results
+          </div>
+        )
       )}
     </div>
   );

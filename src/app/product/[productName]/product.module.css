@@ -1,25 +1,22 @@
 .product_detail_container {
   max-width: 1280px;
   height: 100%;
-  /* background-color: red; */
+
   padding: 1rem 1rem;
   overflow-y: scroll;
 }
-
-
 
 /* product header detail */
 
 .product_header_container {
   margin: 3rem 0;
-  /* background-color: rebeccapurple; */
+
   padding: 2rem 2rem;
   border: 1px solid var(--primary-300);
   border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: start;
-  /* flex-wrap: wrap; */
 }
 .product_header__detail {
   display: flex;
@@ -113,32 +110,29 @@
   padding: 0.8rem 2rem;
   font-size: 0.8rem;
   color: var(--secondary-300);
-  /* background-color: red; */
+
   letter-spacing: 0.3px;
 }
 .data {
   font-size: 0.8rem;
   color: var(--secondary-300);
-  /* background-color: red; */
+
   font-weight: 500;
   letter-spacing: 0.3px;
 }
 
-/*  price visualiser container */
 .price_visualiser_container {
   width: 100%;
-  /* background-color: blue; */
+
   display: flex;
   justify-content: space-between;
   align-items: last baseline;
-  /* flex-wrap: wrap; */
 
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .slider_container {
-  /* background-color: red; */
   min-width: 300px;
   width: 60%;
   height: fit-content;
@@ -175,7 +169,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: red; */
 }
 .slider__bar_marker p {
   font-size: 0.8rem;
@@ -185,19 +178,16 @@
 @media only screen and (max-width: 600px) {
   .price_visualiser_container {
     width: 100%;
-    /* background-color: blue; */
+
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    /* flex-wrap: wrap; */
 
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
   .slider_container {
-    /* background-color: red; */
-
     width: 100%;
     margin-top: 4rem;
     margin-bottom: 2rem;
@@ -219,13 +209,13 @@
     justify-content: center;
     align-items: center;
   }
-  .header_company_detail{
+  .header_company_detail {
     align-items: center;
     margin: 1rem 0rem;
     width: 100%;
     text-align: center;
   }
-  .product_header__price{
+  .product_header__price {
     align-items: center;
   }
 }

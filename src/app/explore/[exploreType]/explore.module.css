@@ -3,7 +3,6 @@
   overflow-y: scroll;
   width: 100%;
   height: 100%;
-  /* grid-template-rows: repeat(5 , minmax(20px , 1fr)); */
 }
 .explore_stocks_type {
   font-size: 2rem;
@@ -41,8 +40,14 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: var(--primary-100);
+  /* background-color: var(--accent-green-dim); */
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+color: var(--secondary-200);
 }
 .product__ticker_name {
   font-size: 1rem;

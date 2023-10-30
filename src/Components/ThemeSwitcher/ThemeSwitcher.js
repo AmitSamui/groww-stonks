@@ -13,8 +13,6 @@ const ThemeSwitcher = () => {
 
   return (
     <label className={`${styles.switch}`}>
-      {/* <button onClick={()=> setTheme('light')}>light</button>
-      <button onClick={()=> setTheme('dark')}>Dark</button> */}
       <input
         checked={theme === "dark" ? true : false}
         onChange={handleThemeSwitch}

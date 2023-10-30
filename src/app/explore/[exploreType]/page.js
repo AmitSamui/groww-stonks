@@ -1,36 +1,16 @@
 "use client";
-import { fetchExploreData } from "@/api";
-import React, { memo, useState, useEffect } from "react";
+import React, { memo } from "react";
 import styles from "./explore.module.css";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import Link from "next/link";
-import { exploreStockType } from "@/constants";
-import { useSelector, useDispatch } from "react-redux";
-import { setProductInformation } from "@/Redux/features/productSlice";
+import { exploreStockType } from "@/Helpers/constants";
 import Loader from "@/Components/loader/Loader";
 import Error from "@/Components/Error/Error";
+import { useFetchExploreData } from "@/hooks/fetchData";
 
 const ExploreStocks = ({ params }) => {
-  const [products, setProducts] = useState();
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-
-  const setProductQuery = async () => {
-    const { queryData, error } = await fetchExploreData(
-      params.exploreType,
-      setLoading
-    );
-    console.log(queryData, error);
-    if (error) {
-      setError(error.message);
-      return;
-    }
-    setProducts(queryData);
-  };
-
-  useEffect(() => {
-    setProductQuery();
-  }, []);
+  const { products, error, loading } = useFetchExploreData(params.exploreType);
+  console.log(products);
 
   if (loading)
     return (
@@ -41,14 +21,7 @@ const ExploreStocks = ({ params }) => {
       </div>
     );
 
-  if (error !== "")
-    return (
-      // <div className={` ${styles.error} flex justify-center align-center`}>
-      <Error errorText={"no data : API limit reached"} />
-      // </div>
-    );
-
-  // const products = await fetchExploreData(params.exploreType);
+  if (error) return <Error errorText={"no data : API limit reached"} />;
 
   return (
     <div
@@ -69,12 +42,8 @@ const ExploreStocks = ({ params }) => {
 };
 
 const ProductCard = ({ productData }) => {
-  //  const dispatch = useDispatch();
   return (
     <Link
-      // onClick={() => {
-      //   dispatch(setProductInformation({ key: "somekey" }));
-      // }}
       href={{
         pathname: `/product/${productData.ticker}`,
         query: {
@@ -84,7 +53,14 @@ const ProductCard = ({ productData }) => {
       }}
       className={`${styles.product_card}`}
     >
-      <div className={`${styles.product__ticker_image}`}>
+      <div
+        style={{
+          backgroundColor: `var(--dim-color-${
+            Math.floor(Math.random() * 6) + 1
+          }`,
+        }}
+        className={`${styles.product__ticker_image}`}
+      >
         {productData?.ticker.substring(0, 1)}
       </div>
       <p className={`${styles.product__ticker_name}`}>{productData.ticker}</p>

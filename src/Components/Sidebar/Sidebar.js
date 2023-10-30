@@ -3,30 +3,25 @@ import React, { memo, useMemo } from "react";
 import styles from "./Sidebar.module.css";
 import { AiOutlineStock } from "react-icons/ai";
 import { LuLayoutDashboard } from "react-icons/lu";
-import {
-  BiRightArrow,
-  BiSearchAlt,
-  BiCollapseHorizontal,
-} from "react-icons/bi";
+import { BiRightArrow, BiSearchAlt } from "react-icons/bi";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import Link from "next/link";
 import { RxCross2 } from "react-icons/rx";
 
 import { toggleSidebar, setSelectedMenu } from "@/Redux/features/sidebarSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { sidebarExploreMenuOptions, sidebarMenuOptions } from "@/constants";
-import { useWindowSize } from "@/hooks/windowSize";
-import { useTheme } from "next-themes";
+import {
+  sidebarExploreMenuOptions,
+  sidebarMenuOptions,
+} from "@/Helpers/constants";
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar.sidebarState);
   const dispatch = useDispatch();
   console.log(useSelector((state) => state.sidebar.selectedSidebarMenu));
-  
 
   return (
     <div
-
       className={`${styles.sidebar_container} ${
         !isSidebarOpen ? styles.sidebar_container_closed : null
       } flex-column justify-between align-start`}

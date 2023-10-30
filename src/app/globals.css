@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -25,6 +25,13 @@
   --secondary-400: #2c2c2c;
   --secondary-500: #333333;
 
+  --dim-color-1: rgb(170, 0, 0 , 0.2);
+  --dim-color-2: rgba(255, 132, 0, 0.2);
+  --dim-color-3: rgba(47, 255, 0, 0.2);
+  --dim-color-4: rgba(0, 148, 139, 0.2);
+  --dim-color-5: rgba(0, 38, 255, 0.2);
+  --dim-color-6: rgba(132, 0, 255, 0.2);
+
   /* --text-md: 120px; */
 }
 
@@ -49,33 +56,32 @@ body {
   font-family: var(--font-poppins);
 }
 
-
-.flex{
+.flex {
   display: flex;
 }
-.flex-column{
+.flex-column {
   display: flex;
   flex-direction: column;
 }
-.justify-center{
+.justify-center {
   justify-content: center;
 }
-.align-center{
+.align-center {
   align-items: center;
 }
-.justify-start{
+.justify-start {
   justify-content: start;
 }
-.align-start{
+.align-start {
   align-items: start;
 }
-.justify-end{
+.justify-end {
   justify-content: end;
 }
-.align-end{
+.align-end {
   align-items: end;
 }
-.justify-between{
+.justify-between {
   justify-content: space-between;
 }
 

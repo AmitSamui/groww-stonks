@@ -1,43 +1,20 @@
-export const graphOptions = {
-  colors: ["var(--accent-green)"],
-  chart: {
-    type: "line",
-    zoom: {
-      enabled: true,
+export const options = {
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      },
+      border: {
+        color: "gray",
+      },
     },
-    foreColor: "var(--secondary-100)",
-  },
-
-  dataLabels: {
-    enabled: false,
-  },
-  stroke: {
-    show: true,
-    // curve: "straight",
-    width: 2,
-  },
-
-  grid: {
-    row: {
-      colors: ["transparent"], // takes an array which will be repeated on columns
-      //   opacity: 0.5,
+    y: {
+      grid: {
+        display: false,
+      },
+      border: {
+        color: "gray",
+      },
     },
-    borderColor: "var(--primary-400)",
-  },
-//   fill: {
-//     gradient: {
-//       enabled: true,
-//       opacityFrom: 0.25,
-//       opacityTo: 0,
-//     },
-//   },
-  //
-  xaxis: {
-    type: "category",
-    // tickAmount: 10,
-    // labels: {
-    //     rotate: 0,
-    //     rotateAlways : false
-    // }
   },
 };

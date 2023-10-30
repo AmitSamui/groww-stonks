@@ -1,4 +1,4 @@
-import { intradayData } from "@/constants";
+import { intradayData } from "@/Helpers/constants";
 import { graphOptions } from "./graphConfig";
 
 export const convertToInternationalCurrencySystem = (labelValue) => {
@@ -54,4 +54,24 @@ export const formatDate = (dateString, type) => {
   } else {
     return date.getDate() + "-" + date.getMonth();
   }
+};
+
+/*
+ ** time (in sec) left for next day
+ *  using for cache revalidation for next day
+ */
+export const getNextDayCacheRevalidation = () => {
+  let actualTime = new Date(Date.now());
+
+  let endOfDay = new Date(
+    actualTime.getFullYear(),
+    actualTime.getMonth(),
+    actualTime.getDate() + 1,
+    0,
+    0,
+    0
+  );
+
+  let timeRemaining = endOfDay.getTime() - actualTime.getTime();
+  return timeRemaining;
 };

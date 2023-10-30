@@ -1,9 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import sidebarReducer from "./features/sidebarSlice";
-// import productReducer from "./features/productSlice";
 import createWebStorage from "redux-persist/es/storage/createWebStorage";
-
 
 // const rootReducer = combineReducers({
 //   sidebar: sidebarReducer,
@@ -70,7 +68,6 @@ const persistConfig = {
 
 const combinedReducers = combineReducers({
   sidebar: sidebarReducer,
-//  product: productSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);

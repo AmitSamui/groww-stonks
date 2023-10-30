@@ -1,13 +1,12 @@
 .error {
   width: 100%;
   height: 100%;
-  
 }
 .error_image {
   width: 100px;
   height: 100px;
 }
-.error_text{
-    color: var(--secondary-200);
-    font-size: 0.8rem;
+.error_text {
+  color: var(--secondary-200);
+  font-size: 0.8rem;
 }

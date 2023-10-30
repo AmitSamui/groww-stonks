@@ -1,4 +1,4 @@
-import { sidebarMenuOptions } from "@/constants";
+import { sidebarMenuOptions } from "@/Helpers/constants";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {

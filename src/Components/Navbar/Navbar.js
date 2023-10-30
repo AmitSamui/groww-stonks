@@ -26,7 +26,6 @@ const Navbar = () => {
         size={"1.2rem"}
       />
       {path !== "/" && <SearchBar />}
-
       {windowSize.width >= 500 && <ThemeSwitcher />}
     </div>
   );

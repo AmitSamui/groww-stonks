@@ -1,14 +1,10 @@
-import Sidebar from "@/Components/Sidebar/Sidebar";
 import "./globals.css";
 import style from "./Layout.module.css";
-import ThemeSwitcher from "@/Components/ThemeSwitcher/ThemeSwitcher";
 import { Poppins } from "next/font/google";
 import Navbar from "@/Components/Navbar/Navbar";
-
-import ThemeProviderComponent from "./ThemeProvider";
-import ReduxProvider from "@/Redux/ReduxProvider";
-import { Provider } from "react-redux";
-import { store } from "@/Redux/store";
+import Sidebar from "@/Components/Sidebar/Sidebar";
+import ThemeProviderComponent from "../Providers/ThemeProvider";
+import ReduxProvider from "@/Providers/ReduxProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,24 +22,19 @@ export default function RootLayout({ children }) {
   return (
     <html className={`${poppins.variable}`} lang="en">
       <body>
-        {/* <Provider store={store}> */}
-
         <ReduxProvider>
           <ThemeProviderComponent>
             <div className={`${style.page_layout}`}>
               <Sidebar />
-
               <div
                 className={`${style.content_layout} flex-column justify-start align-center`}
               >
                 <Navbar />
-
                 {children}
               </div>
             </div>
           </ThemeProviderComponent>
         </ReduxProvider>
-        {/* </Provider> */}
       </body>
     </html>
   );

@@ -73,11 +73,10 @@
 .sidebar__menu_text {
   margin-left: 1rem;
 }
-.sidebar__bottom{
+.sidebar__bottom {
   width: 100%;
-
 }
-.sidebar__bottom p{
+.sidebar__bottom p {
   font-size: 0.8rem;
   color: var(--secondary-100);
 }

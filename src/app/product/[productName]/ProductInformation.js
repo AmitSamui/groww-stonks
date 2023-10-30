@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./product.module.css";
-import { BiCaretDown, BiCaretUp } from "react-icons/bi";
+import { BiCaretDown } from "react-icons/bi";
 import {
   convertToInternationalCurrencySystem,
   getCurrentRelativePercentage,

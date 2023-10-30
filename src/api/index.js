@@ -1,8 +1,12 @@
+import { getNextDayCacheRevalidation } from "@/Helpers";
+
 export const fetchExploreData = async (exploreType, setLoading) => {
   setLoading(true);
   try {
     const response = await fetch(
-      "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=3GKJK51ZJL8WP1WA"
+      // "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=3GKJK51ZJL8WP1WA",
+      "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo",
+      { next: { revalidate: 2 * 3600 } } // revalidate cache every 2 hour
     );
 
     const data = await response.json();
@@ -52,7 +56,9 @@ export const fetchSearchQuery = async (searchQuery) => {
 export const fetchIntraDayData = async (symbol) => {
   try {
     const response = await fetch(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=3GKJK51ZJL8WP1WA`
+      // `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=3GKJK51ZJL8WP1WA`
+      "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo",
+      { next: { revalidate: 15 * 60 } } // revalidate cache after every 15 min
     );
 
     const data = await response.json();
@@ -76,7 +82,9 @@ export const fetchIntraDayData = async (symbol) => {
 export const fetchDailyData = async (symbol) => {
   try {
     const response = await fetch(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=3GKJK51ZJL8WP1WA`
+      // `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=3GKJK51ZJL8WP1WA`
+      "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo",
+      { next: { revalidate: getNextDayCacheRevalidation() } }
     );
 
     const data = await response.json();
@@ -100,7 +108,9 @@ export const fetchDailyData = async (symbol) => {
 export const fetchDailyFullData = async (symbol) => {
   try {
     const response = await fetch(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=3GKJK51ZJL8WP1WA`
+      // `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=3GKJK51ZJL8WP1WA`
+      "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&outputsize=full&apikey=demo",
+      { next: { revalidate: getNextDayCacheRevalidation() } }
     );
 
     const data = await response.json();
@@ -125,7 +135,9 @@ export const fetchCompanyOverview = async (symbol, setLoading) => {
   setLoading(true);
   try {
     const response = await fetch(
-      `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=3GKJK51ZJL8WP1WA`
+      // `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=3GKJK51ZJL8WP1WA`,
+      "https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo",
+      { next: { revalidate: getNextDayCacheRevalidation() } }
     );
 
     const data = await response.json();
