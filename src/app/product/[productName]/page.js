@@ -51,7 +51,7 @@ const ProductDetail = () => {
                 setShowGraph((curr) => !curr);
               }}
             >
-              Show Company's Graph
+              Show Company Graph
             </button>
           </div>
         )}

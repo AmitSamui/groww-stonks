@@ -1,4 +1,3 @@
-import { intradayData } from "@/Helpers/constants";
 import { graphOptions } from "./graphConfig";
 
 export const convertToInternationalCurrencySystem = (labelValue) => {

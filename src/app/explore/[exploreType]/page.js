@@ -40,7 +40,7 @@ const ExploreStocks = ({ params }) => {
   );
 };
 
-const ProductCard = memo(({ productData }) => {
+const ProductCard = ({ productData }) => {
   return (
     <Link
       href={{
@@ -87,6 +87,6 @@ const ProductCard = memo(({ productData }) => {
       </div>
     </Link>
   );
-});
+};
 
 export default memo(ExploreStocks);

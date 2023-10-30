@@ -8,7 +8,6 @@ import {
 } from "@/api";
 import { useEffect, useState, useMemo } from "react";
 
-
 export const useFetchExploreData = (exploreType) => {
   const [products, setProducts] = useState();
   const [error, setError] = useState();
