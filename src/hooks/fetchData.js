@@ -11,7 +11,7 @@ import { useEffect, useState, useMemo } from "react";
 /**
  *
  * @param {*} exploreType
- * fetch op-gainer, top-loser, most actively traded data from api
+ * fetch top-gainer, top-loser, most actively traded data from api
  * @returns data , loading and error
  */
 
