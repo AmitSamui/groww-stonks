@@ -2,23 +2,29 @@
 import React, { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import styles from "./product.module.css";
-// import { companyInformation } from "@/constants";
-import ProductInformation from "./ProductInformation";
-
+import dynamic from "next/dynamic";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
-import ProductGraphChart from "@/Components/Chart/ProductGraphChart";
-
 import Loader from "@/Components/loader/Loader";
 import Error from "@/Components/Error/Error";
 import { useFetchCompanyData } from "@/hooks/fetchData";
+import ProductInformation from "./ProductInformation";
+
+/**
+ * lazy loading company's stock graph
+ */
+const ProductGraphChart = dynamic(
+  () => import("@/Components/Chart/ProductGraphChart"),
+  { ssr: false }
+);
 
 const ProductDetail = () => {
   const path = usePathname();
 
   const queryParam = useSearchParams();
-  // console.log(queryParam.get("change"));
-  // console.log(queryParam.get("price"));
   const productName = path.split("/")[2];
+
+  const [showGraph, setShowGraph] = useState(false);
+
   const { companyInformation, error, loading } =
     useFetchCompanyData(productName);
 
@@ -37,7 +43,18 @@ const ProductDetail = () => {
           price={queryParam.get("price")}
           changePercentage={queryParam.get("change")}
         />
-        <ProductGraphChart productName={productName} />
+        {showGraph && <ProductGraphChart productName={productName} />}
+        {!showGraph && (
+          <div className={`${styles.show_graph_button}`}>
+            <button
+              onClick={() => {
+                setShowGraph((curr) => !curr);
+              }}
+            >
+              Show Company's Graph
+            </button>
+          </div>
+        )}
         <ProductInformation
           companyinformation={companyInformation}
           currentPrice={queryParam.get("price")}

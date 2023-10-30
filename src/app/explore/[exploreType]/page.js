@@ -10,7 +10,6 @@ import { useFetchExploreData } from "@/hooks/fetchData";
 
 const ExploreStocks = ({ params }) => {
   const { products, error, loading } = useFetchExploreData(params.exploreType);
-  console.log(products);
 
   if (loading)
     return (
@@ -41,7 +40,7 @@ const ExploreStocks = ({ params }) => {
   );
 };
 
-const ProductCard = ({ productData }) => {
+const ProductCard = memo(({ productData }) => {
   return (
     <Link
       href={{
@@ -88,6 +87,6 @@ const ProductCard = ({ productData }) => {
       </div>
     </Link>
   );
-};
+});
 
 export default memo(ExploreStocks);

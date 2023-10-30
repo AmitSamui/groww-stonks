@@ -7,6 +7,9 @@ export const options = {
       border: {
         color: "gray",
       },
+      ticks: {
+        count: 10,
+      },
     },
     y: {
       grid: {

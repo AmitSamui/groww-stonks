@@ -15,7 +15,7 @@ export default function Home() {
           className={`${styles.search_guide_container} flex-column justify-start align-center`}
         >
           <p className={`${styles.search_guide_heading}`}>
-            Search Stocks and EFT
+            Search Stocks and ETF
           </p>
           <p className={`${styles.search_guide_text}`}>
             Write ticker name or company name..

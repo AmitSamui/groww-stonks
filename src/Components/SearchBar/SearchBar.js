@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.css";
 import { fetchSearchQuery } from "@/api";
-import { searchMatch } from "@/Helpers/constants";
 import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
 
@@ -13,7 +12,7 @@ const SearchBar = () => {
 
   // search filters
   const [all, setAll] = useState(true);
-  const [EFT, setEFT] = useState(false);
+  const [ETF, setETF] = useState(false);
   const [stock, setStock] = useState(false);
 
   const handleSearchQueryInput = (event) => {
@@ -64,7 +63,7 @@ const SearchBar = () => {
           >
             <p
               onClick={() => {
-                if (!EFT && !stock && all) return;
+                if (!ETF && !stock && all) return;
                 setAll((prev) => !prev);
               }}
               className={`${styles.searchbar_input_filter} ${
@@ -75,18 +74,18 @@ const SearchBar = () => {
             </p>
             <p
               onClick={() => {
-                if (!stock && EFT && !all) return;
-                setEFT((prev) => !prev);
+                if (!stock && ETF && !all) return;
+                setETF((prev) => !prev);
               }}
               className={`${styles.searchbar_input_filter} ${
-                EFT ? styles.searchbar_input_filter_selected : null
+                ETF ? styles.searchbar_input_filter_selected : null
               }`}
             >
-              EFT
+              ETF
             </p>
             <p
               onClick={() => {
-                if (!EFT && stock && !all) return;
+                if (!ETF && stock && !all) return;
                 setStock((prev) => !prev);
               }}
               className={`${styles.searchbar_input_filter} ${
@@ -101,7 +100,7 @@ const SearchBar = () => {
             {queryData && queryData.length > 0 ? (
               queryData?.map((data, index) => {
                 return all ||
-                  (EFT && data["3. type"] === "EFT") ||
+                  (ETF && data["3. type"] === "ETF") ||
                   (stock && data["3. type"] === "Equity") ? (
                   <SearchResult
                     key={index}

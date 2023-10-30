@@ -51,6 +51,21 @@
   font-size: 0.8rem;
 }
 
+.show_graph_button {
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.show_graph_button button{
+  padding: 0.8rem 2rem;
+  background-color: transparent;
+  border: 1px solid var(--accent-green);
+  border-radius: 6px;
+}
+
 /* product information */
 
 .product_information_container {
