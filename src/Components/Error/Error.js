@@ -3,6 +3,12 @@ import styles from "./Error.module.css";
 import Image from "next/image";
 import errorSvg from "../../../public/error.svg";
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns error page 
+ */
+
 const Error = ({ errorText }) => {
   return (
     <div className={`${styles.error} flex-column justify-center align-center`}>

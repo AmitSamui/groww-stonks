@@ -15,6 +15,11 @@ import Error from "../Error/Error";
 
 Chart.register(CategoryScale);
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns graph for the given symbol including all the options
+ */
 const ProductGraphChart = ({ productName }) => {
   const [selectedGraphInterval, setSelectedGraphInterval] = useState("1D");
 

@@ -8,6 +8,13 @@ import {
 } from "@/api";
 import { useEffect, useState, useMemo } from "react";
 
+/**
+ *
+ * @param {*} exploreType
+ * fetch op-gainer, top-loser, most actively traded data from api
+ * @returns data , loading and error
+ */
+
 export const useFetchExploreData = (exploreType) => {
   const [products, setProducts] = useState();
   const [error, setError] = useState();
@@ -33,6 +40,12 @@ export const useFetchExploreData = (exploreType) => {
   return { products, loading, error };
 };
 
+/**
+ *
+ * @param {*} productName
+ * fetch company data from the product name
+ * @returns data , loading and error
+ */
 export const useFetchCompanyData = (productName) => {
   const [companyInformation, setCompanyInformation] = useState();
   const [error, setError] = useState();
@@ -57,6 +70,14 @@ export const useFetchCompanyData = (productName) => {
   return { companyInformation, error, loading };
 };
 
+/**
+ *
+ * @param {*} selectedGraphInterval
+ * @param {*} productName
+ * fetches the graph data
+ * format the data according to the interval
+ * @returns graph data for given interval
+ */
 export const useFetchGraphData = (selectedGraphInterval, productName) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);

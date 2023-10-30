@@ -1,3 +1,4 @@
+
 export const breakPoints = {
   Mobile: [420, 675],
   Tablet: [1024, 765],

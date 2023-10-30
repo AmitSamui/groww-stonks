@@ -10,12 +10,17 @@ import { useFetchCompanyData } from "@/hooks/fetchData";
 import ProductInformation from "./ProductInformation";
 
 /**
- * lazy loading company's stock graph
+ * @returns lazily loded company graph
  */
 const ProductGraphChart = dynamic(
   () => import("@/Components/Chart/ProductGraphChart"),
   { ssr: false }
 );
+
+/**
+ * 
+ * @returns ui for the company detail for the company assest selected by user
+ */
 
 const ProductDetail = () => {
   const path = usePathname();

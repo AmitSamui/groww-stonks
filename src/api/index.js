@@ -1,5 +1,12 @@
 import { getNextDayCacheRevalidation } from "@/Helpers";
 
+/**
+ *
+ * @param {*} exploreType
+ * @param {*} setLoading
+ * @returns stock name of different categories such as top gainer , top loser and most actively traded
+ */
+
 export const fetchExploreData = async (exploreType, setLoading) => {
   setLoading(true);
   try {
@@ -29,6 +36,12 @@ export const fetchExploreData = async (exploreType, setLoading) => {
   }
 };
 
+/**
+ *
+ * @param {*} searchQuery
+ * @returns stock data that matches search queries
+ */
+
 export const fetchSearchQuery = async (searchQuery) => {
   try {
     const response = await fetch(
@@ -52,6 +65,12 @@ export const fetchSearchQuery = async (searchQuery) => {
     };
   }
 };
+
+/**
+ *
+ * @param {*} symbol
+ * @returns stock price data for today
+ */
 
 export const fetchIntraDayData = async (symbol) => {
   try {
@@ -79,6 +98,11 @@ export const fetchIntraDayData = async (symbol) => {
   }
 };
 
+/**
+ *
+ * @param {*} symbol
+ * @returns returns daily compact data starting from today
+ */
 export const fetchDailyData = async (symbol) => {
   try {
     const response = await fetch(
@@ -104,6 +128,12 @@ export const fetchDailyData = async (symbol) => {
     };
   }
 };
+
+/**
+ *
+ * @param {*} symbol
+ * @returns return full length time series stock price data
+ */
 
 export const fetchDailyFullData = async (symbol) => {
   try {
@@ -131,6 +161,12 @@ export const fetchDailyFullData = async (symbol) => {
   }
 };
 
+/**
+ *
+ * @param {*} symbol
+ * @param {*} setLoading
+ * @returns return company details for the given symbol
+ */
 export const fetchCompanyOverview = async (symbol, setLoading) => {
   setLoading(true);
   try {

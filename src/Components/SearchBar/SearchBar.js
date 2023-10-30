@@ -5,6 +5,11 @@ import { fetchSearchQuery } from "@/api";
 import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
 
+/**
+ * 
+ * @returns search component that takes input and gives the search result
+ */
+
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [queryData, setQueryData] = useState([]);

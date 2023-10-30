@@ -9,6 +9,10 @@ import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import { usePathname } from "next/navigation";
 import { useWindowSize } from "@/hooks/windowSize";
 
+/**
+ * 
+ * @returns navbar component including searchbar, hamburguer menu and theme switch
+ */
 const Navbar = () => {
   const path = usePathname();
   const dispatch = useDispatch();

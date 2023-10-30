@@ -15,6 +15,11 @@ import {
   sidebarMenuOptions,
 } from "@/Helpers/constants";
 
+/**
+ * 
+ * @returns collapsible sidebar component
+ */
+
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar.sidebarState);
   const dispatch = useDispatch();

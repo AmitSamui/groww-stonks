@@ -1,5 +1,10 @@
 import { graphOptions } from "./graphConfig";
 
+/**
+ *
+ * @param {*} labelValue
+ * @returns string with suffix as standard number system
+ */
 export const convertToInternationalCurrencySystem = (labelValue) => {
   // twelve Zeroes for Billions
   return Math.abs(Number(labelValue)) >= 1.0e12
@@ -16,6 +21,13 @@ export const convertToInternationalCurrencySystem = (labelValue) => {
     : Math.abs(Number(labelValue));
 };
 
+/**
+ *
+ * @param {*} high price
+ * @param {*} low price
+ * @param {*} current price
+ * @returns the percentage in which the current price lies in between high and low price
+ */
 export const getCurrentRelativePercentage = (high, low, current) => {
   const totalValue = high - low;
   const currentValue = current - low;
@@ -24,6 +36,12 @@ export const getCurrentRelativePercentage = (high, low, current) => {
   return percentage;
 };
 
+/**
+ *
+ * @param {*} data
+ * @param {*} selectedGraphInterval
+ * @returns data formatted in [{xlabel , ydata}] form for chart js graph
+ */
 export const formatData = (data, selectedGraphInterval) => {
   const entries = Object.entries(data).map(([key, value]) => [
     formatDate(key, selectedGraphInterval),
@@ -42,6 +60,12 @@ export const formatData = (data, selectedGraphInterval) => {
     : formattedData;
 };
 
+/**
+ *
+ * @param {*} dateString
+ * @param {*} type
+ * @returns formatted date according to the graph interval
+ */
 export const formatDate = (dateString, type) => {
   const date = new Date(dateString);
   if (type === "1D") {
@@ -55,9 +79,9 @@ export const formatDate = (dateString, type) => {
   }
 };
 
-/*
- ** time (in sec) left for next day
- *  using for cache revalidation for next day
+/**
+ *
+ * @returns time (in seconds) left for next day to re-validate the cache
  */
 export const getNextDayCacheRevalidation = () => {
   let actualTime = new Date(Date.now());

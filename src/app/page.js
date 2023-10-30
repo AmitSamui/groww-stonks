@@ -3,6 +3,11 @@
 import styles from "./page.module.css";
 import SearchBar from "@/Components/SearchBar/SearchBar";
 
+/**
+ * 
+ * @returns ui for searchi functionality
+ */
+
 export default function Home() {
   return (
     <div

@@ -8,6 +8,12 @@ import Loader from "@/Components/loader/Loader";
 import Error from "@/Components/Error/Error";
 import { useFetchExploreData } from "@/hooks/fetchData";
 
+/**
+ *
+ * @param {*} {params}
+ * @returns the page ui for top gainer, top looser and most actively traded
+ */
+
 const ExploreStocks = ({ params }) => {
   const { products, error, loading } = useFetchExploreData(params.exploreType);
 

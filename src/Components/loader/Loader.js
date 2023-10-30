@@ -2,6 +2,11 @@ import React from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import styles from "./loader.module.css";
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns loading page
+ */
 const Loader = ({ loadingText }) => {
   return (
     <div

@@ -3,45 +3,10 @@ import { persistStore, persistReducer } from "redux-persist";
 import sidebarReducer from "./features/sidebarSlice";
 import createWebStorage from "redux-persist/es/storage/createWebStorage";
 
-// const rootReducer = combineReducers({
-//   sidebar: sidebarReducer,
-// });
-
-// const persistConfig = {
-//   key: "root",
-//   storage,
-// };
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// export const store = configureStore({
-//   reducer: persistedReducer,s
-// });
-
-// export const configureReduxStore = (passedStorage) => {
-//   const combinedReducers = combineReducers({
-//     sidebar: sidebarReducer,
-//   });
-//   if (!passedStorage) {
-//     const store = configureStore({
-//       reducer: combineReducers,
-//     });
-//     return { store };
-//   }
-
-//   const persistConfig = {
-//     key: "root",
-//     storage: passedStorage,
-//   };
-//   const persistedReducer = persistReducer(persistConfig, combinedReducers);
-
-//   const store = configureStore({
-//     reducer: persistedReducer,
-//   });
-//   const persistor = persistStore(store);
-//   return { store, persistor };
-// };
-
+/**
+ *
+ * @returns noop storage for server side to persist data
+ */
 const createNoopStorage = () => {
   return {
     getItem(_key) {
@@ -66,12 +31,21 @@ const persistConfig = {
   storage,
 };
 
+/**
+ * combines all the reducers (here one, can be written seperated)
+ */
 const combinedReducers = combineReducers({
   sidebar: sidebarReducer,
 });
 
+/**
+ * configure the persist reducer
+ */
 const persistedReducer = persistReducer(persistConfig, combinedReducers);
 
+/**
+ * create and configure store
+ */
 export const store = configureStore({
   reducer: persistedReducer,
 });

@@ -6,6 +6,11 @@ import {
   getCurrentRelativePercentage,
 } from "@/Helpers";
 
+/**
+ *
+ * @param {*} param0
+ * @returns component for company overview including slider of current price and other details
+ */
 const ProductInformation = ({ companyinformation, currentPrice }) => {
   return (
     <div className={`${styles.product_information_container}`}>

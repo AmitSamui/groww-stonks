@@ -1,3 +1,6 @@
+/**
+ * configuration for chart js line graph
+ */
 export const options = {
   scales: {
     x: {
