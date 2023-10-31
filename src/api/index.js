@@ -11,7 +11,7 @@ export const fetchExploreData = async (exploreType, setLoading) => {
   setLoading(true);
   try {
     const response = await fetch(
-      // `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`,
+      // `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${process.env.NEXT_PUBLIC_ALPHA_VANTAGE_API_KEY}`,
       "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo",
       { next: { revalidate: 2 * 3600 } } // revalidate cache every 2 hour
     );
