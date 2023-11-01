@@ -14,7 +14,6 @@ export const sidebarSlice = createSlice({
       state.sidebarState = !state.sidebarState;
     },
     setSelectedMenu: (state, action) => {
-      console.log(action.payload);
       state.selectedSidebarMenu = action.payload;
     },
   },

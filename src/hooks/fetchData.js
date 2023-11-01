@@ -25,7 +25,7 @@ export const useFetchExploreData = (exploreType) => {
       exploreType,
       setLoading
     );
-    console.log(queryData, error);
+
     if (error) {
       setError(error.message);
       return;

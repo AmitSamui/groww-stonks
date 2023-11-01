@@ -179,8 +179,6 @@ export const fetchCompanyOverview = async (symbol, setLoading) => {
     const data = await response.json();
     setLoading(false);
 
-    console.log("data", data);
-
     if (data.Symbol) {
       return { queryData: data, error: null };
     } else {
