@@ -1,5 +1,4 @@
-"use client";
-import React, { memo } from "react";
+import React from "react";
 import styles from "./explore.module.css";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import Link from "next/link";
@@ -85,4 +84,4 @@ const ProductCard = ({ productData }) => {
   );
 };
 
-export default memo(ExploreStocks);
+export default ExploreStocks;

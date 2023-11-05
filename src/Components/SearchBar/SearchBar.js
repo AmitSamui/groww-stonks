@@ -37,7 +37,6 @@ const SearchBar = () => {
           return;
         }
 
-        
         setQueryData(searchMatch);
       }, 500);
     }
@@ -125,14 +124,14 @@ const SearchBar = () => {
           </div>
         </div>
       ) : (
-        query !== "" && (
-          searching ? (
-            <div className={`${styles.searchbar_input_results}`}>Searching..</div>
-          ) : (
-            <div className={`${styles.searchbar_input_results}`}>No Search Result..</div>
-          )
-        )
-        
+        query !== "" &&
+        (searching ? (
+          <div className={`${styles.searchbar_input_results}`}>Searching..</div>
+        ) : (
+          <div className={`${styles.searchbar_input_results}`}>
+            No Search Result..
+          </div>
+        ))
       )}
     </div>
   );
