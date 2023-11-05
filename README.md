@@ -20,7 +20,7 @@ The assignment assigned by Groww for the Frontend Developer Intern role involves
 All the required data could be fetched from API endpoint provided by 
 
 ```http
-  https://www.alphavantage.co.
+  https://www.alphavantage.co
 ```
 
 
