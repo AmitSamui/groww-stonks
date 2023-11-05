@@ -4,9 +4,8 @@ import styles from "./explore.module.css";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import Link from "next/link";
 import { exploreStockType } from "@/Helpers/constants";
-import Loader from "@/Components/loader/Loader";
 import Error from "@/Components/Error/Error";
-import { useFetchExploreData } from "@/hooks/fetchData";
+import { fetchExploreData } from "@/api";
 
 /**
  *
@@ -14,19 +13,10 @@ import { useFetchExploreData } from "@/hooks/fetchData";
  * @returns the page ui for top gainer, top looser and most actively traded
  */
 
-const ExploreStocks = ({ params }) => {
-  const { products, error, loading } = useFetchExploreData(params.exploreType);
+const ExploreStocks = async ({ params }) => {
+  const products = await fetchExploreData(params.exploreType);
 
-  if (loading)
-    return (
-      <div
-        className={`${styles.loading_container} flex justify-center align-center`}
-      >
-        <Loader loadingText={"Hang Tight : loading your data"} />
-      </div>
-    );
-
-  if (error) return <Error errorText={"no data : API limit reached"} />;
+  if (!products) return <Error errorText={"no data : API limit reached"} />;
 
   return (
     <div

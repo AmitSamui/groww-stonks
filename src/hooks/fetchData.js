@@ -20,24 +20,88 @@ export const useFetchExploreData = (exploreType) => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
-  const setProductQuery = async () => {
-    const { queryData, error } = await fetchExploreData(
-      exploreType,
-      setLoading
-    );
-
-    if (error) {
-      setError(error.message);
-      return;
-    }
-    setProducts(queryData);
-  };
-
   useEffect(() => {
+    const setProductQuery = async () => {
+      const { queryData, error } = await fetchExploreData(
+        exploreType,
+        setLoading
+      );
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+      setProducts(queryData);
+    };
     setProductQuery();
-  }, []);
+  }, [exploreType]);
 
   return { products, loading, error };
+};
+
+/**
+ *
+ * @param {*} selectedGraphInterval
+ * @param {*} productName
+ * fetches the graph data
+ * format the data according to the interval
+ * @returns graph data for given interval
+ */
+export const useFetchGraphData = (selectedGraphInterval, productName) => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [error, setError] = useState();
+
+  const formattedGraphData = useMemo(
+    () => formatData(data, selectedGraphInterval),
+    [data, selectedGraphInterval]
+  );
+
+  useEffect(() => {
+    const graphEffect = async () => {
+      setLoading(true);
+      if (selectedGraphInterval === "1D") {
+        const { queryData, error } = await fetchIntraDayData(productName);
+
+        if (error) {
+          setLoading(false);
+          setError(error.message);
+          return;
+        }
+
+        setData(queryData);
+      } else if (
+        selectedGraphInterval === "1W" ||
+        selectedGraphInterval === "1M" ||
+        selectedGraphInterval === "3M"
+      ) {
+        const { queryData, error } = await fetchDailyData(productName);
+
+        if (error) {
+          setLoading(false);
+          setError(error.message);
+          return;
+        }
+
+        setData(queryData);
+      } else if (selectedGraphInterval === "6M") {
+        const { queryData, error } = await fetchDailyFullData(productName);
+
+        if (error) {
+          setLoading(false);
+          setError(error.message);
+          return;
+        }
+
+        setData(queryData);
+      }
+
+      setLoading(false);
+    };
+    graphEffect();
+  }, [selectedGraphInterval ,productName]);
+
+  return { formattedGraphData, error, loading };
 };
 
 /**
@@ -65,73 +129,7 @@ export const useFetchCompanyData = (productName) => {
     };
 
     fetchOverview();
-  }, []);
+  }, [productName]);
 
   return { companyInformation, error, loading };
-};
-
-/**
- *
- * @param {*} selectedGraphInterval
- * @param {*} productName
- * fetches the graph data
- * format the data according to the interval
- * @returns graph data for given interval
- */
-export const useFetchGraphData = (selectedGraphInterval, productName) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const [error, setError] = useState();
-
-  const formattedGraphData = useMemo(
-    () => formatData(data, selectedGraphInterval),
-    [data, selectedGraphInterval]
-  );
-
-  const graphEffect = async () => {
-    setLoading(true);
-    if (selectedGraphInterval === "1D") {
-      const { queryData, error } = await fetchIntraDayData(productName);
-
-      if (error) {
-        setLoading(false);
-        setError(error.message);
-        return;
-      }
-
-      setData(queryData);
-    } else if (
-      selectedGraphInterval === "1W" ||
-      selectedGraphInterval === "1M" ||
-      selectedGraphInterval === "3M"
-    ) {
-      const { queryData, error } = await fetchDailyData(productName);
-
-      if (error) {
-        setLoading(false);
-        setError(error.message);
-        return;
-      }
-
-      setData(queryData);
-    } else if (selectedGraphInterval === "6M") {
-      const { queryData, error } = await fetchDailyFullData(productName);
-
-      if (error) {
-        setLoading(false);
-        setError(error.message);
-        return;
-      }
-
-      setData(queryData);
-    }
-
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    graphEffect();
-  }, [selectedGraphInterval]);
-
-  return { formattedGraphData, error, loading };
 };

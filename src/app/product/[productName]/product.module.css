@@ -84,12 +84,14 @@
   border-radius: 0 0 8px 8px;
   border-top: none;
   color: var(--secondary-300);
+  width: 100%;
 }
 .product_information__description {
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.3px;
   line-height: 1.5rem;
+  width: 100%;
 }
 .product_information__company_tags {
   display: grid;

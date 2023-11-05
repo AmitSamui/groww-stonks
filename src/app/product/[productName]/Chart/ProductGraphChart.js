@@ -10,14 +10,14 @@ import { Line } from "react-chartjs-2";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 
-import Loader from "../loader/Loader";
-import Error from "../Error/Error";
+import Loader from "../../../../Components/loader/Loader";
+import Error from "../../../../Components/Error/Error";
 
 Chart.register(CategoryScale);
 
 /**
- * 
- * @param {*} param0 
+ *
+ * @param {*} param0
  * @returns graph for the given symbol including all the options
  */
 const ProductGraphChart = ({ productName }) => {

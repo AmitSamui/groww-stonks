@@ -7,33 +7,15 @@ import { getNextDayCacheRevalidation } from "@/Helpers";
  * @returns stock name of different categories such as top gainer , top loser and most actively traded
  */
 
-export const fetchExploreData = async (exploreType, setLoading) => {
-  setLoading(true);
-  try {
-    const response = await fetch(
-      // `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`,
-      "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo",
-      { next: { revalidate: 2 * 3600 } } // revalidate cache every 2 hour
-    );
+export const fetchExploreData = async (exploreType) => {
+  const response = await fetch(
+    // `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`,
+    "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo",
+    { next: { revalidate: 2 * 3600 } } // revalidate cache every 2 hour
+  );
 
-    const data = await response.json();
-    setLoading(false);
-
-    if (data[exploreType]) {
-      return { queryData: data[exploreType], error: null };
-    } else {
-      return {
-        queryData: null,
-        error: { message: "No data or API limit reached" },
-      };
-    }
-  } catch (error) {
-    setLoading(false);
-    return {
-      queryData: null,
-      error: { message: "There is a problem fetching data" },
-    };
-  }
+  const data = await response.json();
+  return data[exploreType];
 };
 
 /**

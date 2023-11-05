@@ -4,21 +4,22 @@ import { usePathname, useSearchParams } from "next/navigation";
 import styles from "./product.module.css";
 import dynamic from "next/dynamic";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
-import Loader from "@/Components/loader/Loader";
 import Error from "@/Components/Error/Error";
-import { useFetchCompanyData } from "@/hooks/fetchData";
 import ProductInformation from "./ProductInformation";
+import { fetchCompanyOverview } from "@/api";
+import { useFetchCompanyData } from "@/hooks/fetchData";
+import Loader from "@/Components/loader/Loader";
 
 /**
  * @returns lazily loded company graph
  */
 const ProductGraphChart = dynamic(
-  () => import("@/Components/Chart/ProductGraphChart"),
+  () => import("@/app/product/[productName]/Chart/ProductGraphChart"),
   { ssr: false }
 );
 
 /**
- * 
+ *
  * @returns ui for the company detail for the company assest selected by user
  */
 
@@ -35,7 +36,7 @@ const ProductDetail = () => {
 
   if (loading) return <Loader loadingText={"Hang Tight : loading your data"} />;
 
-  if (error) return <Error errorText={error} />;
+  if (error) return <Error errorText={"No data : Please Try again later"} />;
 
   return (
     companyInformation && (
