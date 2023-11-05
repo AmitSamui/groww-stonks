@@ -6,7 +6,7 @@ import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
 
 /**
- * 
+ *
  * @returns search component that takes input and gives the search result
  */
 
@@ -14,6 +14,7 @@ const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [queryData, setQueryData] = useState([]);
   const [error, setError] = useState();
+  const [searching, setsearching] = useState(false);
 
   // search filters
   const [all, setAll] = useState(true);
@@ -28,13 +29,15 @@ const SearchBar = () => {
     let timeout;
     if (query !== "") {
       timeout = setTimeout(async () => {
+        setsearching(true);
         const { queryData: searchMatch, error } = await fetchSearchQuery(query);
-
+        setsearching(false);
         if (error) {
           setError(error.message);
           return;
         }
 
+        
         setQueryData(searchMatch);
       }, 500);
     }
@@ -122,10 +125,11 @@ const SearchBar = () => {
           </div>
         </div>
       ) : (
-        query !== "" && (
-          <div className={`${styles.searchbar_input_results}`}>
-            no search results
-          </div>
+        query !== "" &&
+        searching ? (
+          <div className={`${styles.searchbar_input_results}`}>Searching..</div>
+        ) : (
+          <div className={`${styles.searchbar_input_results}`}>No Search Result..</div>
         )
       )}
     </div>
